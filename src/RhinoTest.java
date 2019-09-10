@@ -16,12 +16,7 @@ class RhinoTest {
         assertEquals(null, ernest.getPop());
         assertEquals(0, ernest.numChildren());
 
-        Rhino li= new Rhino("li", 1991, 12, 'F');
-        Rhino big= new Rhino("big", 1990, 5, 'F');
-        assertEquals(true, ernest.isOlder(li));
-        assertEquals(false, li.isOlder(ernest));
-        System.out.println(li.isOlder(ernest));
-        assertEquals(false, li.isOlder(big));
+
 
         /**tests for areSiblings()*/
         Rhino motherRhino = new Rhino("motherRhino", 1960, 5, 'F');
@@ -29,6 +24,29 @@ class RhinoTest {
         Rhino kevin("kevin", 1990, 7, 'M', motherRhino, fatherRhino);
         Rhino
         assertEquals(true,)
+
+        Rhino li= new Rhino("li", 1990, 5, 'F');
+        Rhino yu= new Rhino("yu", 1990, 3, 'F');
+        Rhino melody= new Rhino("melody", 1990, 6, 'F');
+        Rhino may77= new Rhino("may77", 1977, 5, 'F');
+        Rhino aug77= new Rhino("aug77", 1977, 8, 'F');
+        Rhino feb77= new Rhino("feb77", 1977, 2, 'F');
+
+        Rhino may99= new Rhino("may77", 1999, 5, 'F');
+        Rhino aug99= new Rhino("aug99", 1999, 8, 'F');
+        Rhino feb99= new Rhino("feb99", 1999, 2, 'F');
+
+        assertEquals(true, ernest.isOlder(may99));
+        assertEquals(true, ernest.isOlder(aug99));
+        assertEquals(true, ernest.isOlder(feb99));
+        assertEquals(true, ernest.isOlder(melody));
+
+        assertEquals(false, ernest.isOlder(may77));
+        assertEquals(false, ernest.isOlder(aug77));
+        assertEquals(false, ernest.isOlder(feb77));
+        assertEquals(false, ernest.isOlder(yu));
+        assertEquals(false, ernest.isOlder(li));
+
     }
 
 }
