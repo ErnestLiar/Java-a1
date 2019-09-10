@@ -7,6 +7,7 @@ public class Rhino {
      * Its father and mother are unknown, and it has no children.<br>
      * Precondition: n has at least one character in it, m is 1 for Jan, 2 for Feb, etc.,<br>
      * and g is 'F' or 'M' for female or male */
+
     public Rhino(String n, int y, int m, char g) {
         name= n;
         year= y;
@@ -115,7 +116,13 @@ public class Rhino {
 
     public boolean isOlder(Rhino r) {
 
-        return (getYOB() < r.getYOB() || (getYOB() == r.getYOB() && getMOB() < r.getMOB()));
+        return getYOB() < r.getYOB() || getYOB() == r.getYOB() && getMOB() < r.getMOB();
+    }
+
+    /** = "this rhino and r are siblings. " */
+    public boolean areSiblings(Rhino r) {
+
+        return this != r && mom != r.mom && pop != r.pop && mom == r.mom && pop == r.pop;
     }
 
 }

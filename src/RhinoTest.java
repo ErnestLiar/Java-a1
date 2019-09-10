@@ -17,7 +17,18 @@ class RhinoTest {
         assertEquals(0, ernest.numChildren());
 
         Rhino li= new Rhino("li", 1991, 12, 'F');
-        assertEquals(true, ernest.isOlder);
+        Rhino big= new Rhino("big", 1990, 5, 'F');
+        assertEquals(true, ernest.isOlder(li));
+        assertEquals(false, li.isOlder(ernest));
+        System.out.println(li.isOlder(ernest));
+        assertEquals(false, li.isOlder(big));
+
+        /**tests for areSiblings()*/
+        Rhino motherRhino = new Rhino("motherRhino", 1960, 5, 'F');
+        Rhino fatherRhino = new Rhino("fatherRhino", 1960, 5, 'M');
+        Rhino kevin("kevin", 1990, 7, 'M', motherRhino, fatherRhino);
+        Rhino
+        assertEquals(true,)
     }
 
 }
