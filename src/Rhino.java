@@ -75,5 +75,19 @@ public class Rhino {
     public int numChildren() {
         return children;
     }
+    
+    public void setMom(Rhino mother) {
+        /**Set the rhino's mom to mother.<br>
+        Precondition: this rhino's mom is null and mother is not null and<br>
+        mother is female.*/
+        this.mom = mother;
+    }
+
+    public void setpop(Rhino father) {
+        /**Set this rhino's dad to father.<br>
+        Precondition: this rhino's dad is null and father is not null and<br>
+        father is male.*/
+        this.pop = father;
+    }
 
 }
