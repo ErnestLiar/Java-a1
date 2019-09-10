@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 class RhinoTest {
 
     @Test
-    void test() {
+    void testA() {
 
         Rhino ernest= new Rhino("ernest", 1990, 5, 'M');
         assertEquals("ernest", ernest.getName());
@@ -15,15 +15,6 @@ class RhinoTest {
         assertEquals(null, ernest.getMom());
         assertEquals(null, ernest.getPop());
         assertEquals(0, ernest.numChildren());
-
-
-
-        /**tests for areSiblings()*/
-        Rhino motherRhino = new Rhino("motherRhino", 1960, 5, 'F');
-        Rhino fatherRhino = new Rhino("fatherRhino", 1960, 5, 'M');
-        Rhino kevin("kevin", 1990, 7, 'M', motherRhino, fatherRhino);
-        Rhino
-        assertEquals(true,)
 
         Rhino li= new Rhino("li", 1990, 5, 'F');
         Rhino yu= new Rhino("yu", 1990, 3, 'F');
@@ -46,6 +37,13 @@ class RhinoTest {
         assertEquals(false, ernest.isOlder(feb77));
         assertEquals(false, ernest.isOlder(yu));
         assertEquals(false, ernest.isOlder(li));
+
+        /**tests for areSiblings()*/
+        Rhino motherRhino = new Rhino("motherRhino", 1960, 5, 'F');
+        Rhino fatherRhino = new Rhino("fatherRhino", 1960, 5, 'M');
+        Rhino kevin = new Rhino("kevin", 1990, 7, 'M', motherRhino, fatherRhino);
+        Rhino broofKevin = new Rhino("broofKevin", 1985, 5, 'M', motherRhino, fatherRhino);
+        assertEquals(true,kevin.areSiblings(broofKevin));
 
     }
 
