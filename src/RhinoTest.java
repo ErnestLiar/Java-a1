@@ -1,5 +1,4 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,13 +16,8 @@ class RhinoTest {
         assertEquals(null, ernest.getPop());
         assertEquals(0, ernest.numChildren());
 
-        /*    assertEquals(0,t1.getHour());
-        *assertEquals(0,t1.getMinute());
-        *assertEquals(“00:00”, t1.toString());
-        *t1.setHour(21);
-        *assertEquals(21, t1.getHour());
-        */
-        fail("Not yet implemented");
+        Rhino li= new Rhino("li", 1991, 12, 'F');
+        assertEquals(true, ernest.isOlder);
     }
 
 }
