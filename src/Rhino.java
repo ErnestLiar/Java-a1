@@ -1,8 +1,7 @@
-
+/** NetId: el657, ny46. Time spent: hh hours, mm minutes. What I thought about this
+    * assignment: */
+/** An instance maintains info about the rhino. */
 public class Rhino {
-    /** NetId: el657, ny46. Time spent: hh hours, mm minutes. What I thought about this
-     * assignment: */
-    /** An instance maintains info about the rhino. */
 
     /** Constructor: a new Rhino with name n, birth year y, birth month m, and gender g.<br>
      * Its father and mother are unknown, and it has no children.<br>
@@ -13,6 +12,25 @@ public class Rhino {
         year= y;
         month= m;
         gender= g;
+        mom= null;
+        pop= null;
+
+    }
+
+    /** Constructor: a new Rhino with name n, birth year y, birth month m, gender g,<br>
+     * mother mother, father father, and no children.<br>
+     * Precondition: n has at least one character in it, m is 1 for Jan, 2 for Feb, etc., <br>
+     * g is 'F' or 'M' for female or male, and <br>
+     * mother is non-null and female, and <br>
+     * father is non-null and male). */
+
+    public Rhino(String n, int y, int m, char g, Rhino mother, Rhino father) {
+        name= n;
+        year= y;
+        month= m;
+        gender= g;
+        mom= mother;
+        pop= father;
 
     }
 
@@ -75,19 +93,29 @@ public class Rhino {
     public int numChildren() {
         return children;
     }
-    
+
+    /** Set the rhino's mom to mother.<br>
+     * Precondition: this rhino's mom is null and mother is not null and<br>
+     * mother is female. */
     public void setMom(Rhino mother) {
-        /**Set the rhino's mom to mother.<br>
-        Precondition: this rhino's mom is null and mother is not null and<br>
-        mother is female.*/
-        this.mom = mother;
+
+        mom= mother;
     }
 
+    /** Set this rhino's dad to father.<br>
+     * Precondition: this rhino's dad is null and father is not null and<br>
+     * father is male. */
     public void setpop(Rhino father) {
-        /**Set this rhino's dad to father.<br>
-        Precondition: this rhino's dad is null and father is not null and<br>
-        father is male.*/
-        this.pop = father;
+
+        pop= father;
+    }
+
+    /** = "r is not null and this rhino was born before r."<br>
+     * Precondition: r is not null. */
+
+    public boolean isOlder(Rhino r) {
+
+        return (getYOB() < r.getYOB() || (getYOB() == r.getYOB() && getMOB() < r.getMOB()));
     }
 
 }
