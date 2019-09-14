@@ -135,6 +135,7 @@ public class Rhino {
 
         return this != r && r != null &&
             (mom == r.mom && mom != null || pop == r.pop && pop != null);
+
     }
 
 }
