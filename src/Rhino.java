@@ -7,7 +7,6 @@ public class Rhino {
      * Its father and mother are unknown, and it has no children.<br>
      * Precondition: n has at least one character in it, m is 1 for Jan, 2 for Feb, etc.,<br>
      * and g is 'F' or 'M' for female or male */
-
     public Rhino(String n, int y, int m, char g) {
         assert n.length() >= 1 && m >= 1 && m <= 12;
         assert g == 'F' || g == 'M';
@@ -26,7 +25,6 @@ public class Rhino {
      * g is 'F' or 'M' for female or male, and <br>
      * mother is non-null and female, and <br>
      * father is non-null and male). */
-
     public Rhino(String n, int y, int m, char g, Rhino mother, Rhino father) {
         assert n.length() >= 1 && m >= 1 && m <= 12;
         assert g == 'F' || g == 'M';
@@ -44,8 +42,8 @@ public class Rhino {
 
     /** the name of the rhino */
     private String name;
-    /** the gender of the rhino. Input can either be 'M' for male or 'F' for female */
 
+    /** the gender of the rhino. Input can either be 'M' for male or 'F' for female */
     private char gender;
 
     /** the year of the rhino's birth. Can be any integer */
@@ -66,14 +64,12 @@ public class Rhino {
     /** = the name of this rhino. */
     public String getName() {
         return name;
-
     }
 
     /** = this Rhino is female */
     public boolean isFemale() {
         if (gender == 'M') { return false; }
         return true;
-
     }
 
     /** = the month this rhino was born in the range 1..12. */
@@ -84,7 +80,6 @@ public class Rhino {
     /** = the year this rhino was born. */
     public int getYOB() {
         return year;
-
     }
 
     /** = (pointer to) the object for mother of this rhino. */
@@ -107,7 +102,6 @@ public class Rhino {
      * mother is female. */
     public void setMom(Rhino mother) {
         assert mother != null && mom == null && mother.isFemale();
-
         mom= mother;
         mother.children++ ;
     }
@@ -135,7 +129,6 @@ public class Rhino {
 
         return this != r && r != null &&
             (mom == r.mom && mom != null || pop == r.pop && pop != null);
-
     }
 
 }

@@ -99,17 +99,47 @@ class RhinoTest {
         assertEquals(false, kevin.areSiblings(diffmom));
         assertEquals(false, kevin.areSiblings(diffpop));
         assertEquals(true, kevin.areSiblings(broofKevin));
-
     }
 
     @Test
     void testAssert() {
 
         Rhino fatherRhino= new Rhino("fatherRhino", 1960, 5, 'M');
-        Rhino motherRhino= null;
+        Rhino motherRhino= new Rhino("motherRhino", 1960, 6, 'F');
+        Rhino Peter= new Rhino("peter", 1990, 8, 'M', motherRhino, fatherRhino);
+
+        /*testing preconditions for GroupA,C methods.*/
+        assertThrows(AssertionError.class,
+            () -> { new Rhino("", 1990, 7, 'M'); });
+        assertThrows(AssertionError.class,
+            () -> { new Rhino("ryan", 1990, 0, 'M'); });
+        assertThrows(AssertionError.class,
+            () -> { new Rhino("ryan", 1990, 7, 'I'); });
+
+        assertThrows(AssertionError.class,
+            () -> { new Rhino("kevin", 1990, 7, 'M', null, fatherRhino); });
+        assertThrows(AssertionError.class,
+            () -> { new Rhino("kevin", 1990, 7, 'M', motherRhino, null); });
+        assertThrows(AssertionError.class,
+            () -> { new Rhino("", 1990, 7, 'M', motherRhino, fatherRhino); });
+        assertThrows(AssertionError.class,
+            () -> { new Rhino("kevin", 1990, 7, 'A', motherRhino, fatherRhino); });
         assertThrows(AssertionError.class,
             () -> { new Rhino("kevin", 1990, 7, 'M', motherRhino, fatherRhino); });
+        assertThrows(AssertionError.class,
+            () -> { new Rhino("kevin", 1990, 13, 'M', motherRhino, fatherRhino); });
 
+        /*testing preconditions for GroupB methods.*/
+        assertThrows(AssertionError.class, () -> { peter.setMom(motherRhino); });
+        assertThrows(AssertionError.class, () -> { peter.setMom(null); });
+        assertThrows(AssertoinError.class, () -> { peter.setMom(fatherRhino); });
+
+        assertThrows(AssertionError.class, () -> { peter.setPop(fatherRhino); });
+        assertThrows(AssertionError.class, () -> { peter.setPop(null); });
+        assertThrows(AssertoinError.class, () -> { peter.setPop(motehrRhino); });
+
+        /*testing preconditions for GroupD methods.*/
+        assertThrows(AssertoinError.class, () -> { fatherRhino.isOlder(null); });
     }
 
 }
