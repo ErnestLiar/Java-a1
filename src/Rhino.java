@@ -32,6 +32,8 @@ public class Rhino {
         gender= g;
         mom= mother;
         pop= father;
+        mother.children++ ;
+        father.children++ ;
 
     }
 
@@ -101,6 +103,7 @@ public class Rhino {
     public void setMom(Rhino mother) {
 
         mom= mother;
+        mother.children++ ;
     }
 
     /** Set this rhino's dad to father.<br>
@@ -109,6 +112,7 @@ public class Rhino {
     public void setpop(Rhino father) {
 
         pop= father;
+        father.children++ ;
     }
 
     /** = "r is not null and this rhino was born before r."<br>
