@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -74,7 +75,7 @@ class RhinoTest {
         Rhino fatherRhino= new Rhino("fatherRhino", 1960, 5, 'M');
         Rhino kevin= new Rhino("kevin", 1990, 7, 'M', motherRhino, fatherRhino);
         Rhino broofKevin= new Rhino("broofKevin", 1985, 5, 'M', motherRhino, fatherRhino);
-        assertEquals(true, kevin.areSiblings(broofKevin));
+        // assertEquals(true, kevin.areSiblings(broofKevin));
 
     }
 
@@ -82,8 +83,9 @@ class RhinoTest {
     void testAssert() {
 
         Rhino fatherRhino= new Rhino("fatherRhino", 1960, 5, 'M');
-        // assertThrows(, () -> {Rhino kevin= new Rhino("kevin", 1990, 7, 'M', motherRhino,
-        // fatherRhino);});
+        Rhino motherRhino= null;
+        assertThrows(AssertionError.class,
+            () -> { new Rhino("kevin", 1990, 7, 'M', motherRhino, fatherRhino); });
 
     }
 
