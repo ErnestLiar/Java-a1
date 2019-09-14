@@ -26,7 +26,7 @@ class RhinoTest {
         Rhino adopt= new Rhino("adopt", 1995, 5, 'M');
         Rhino mom= new Rhino("mom", 1990, 5, 'F');
         assertEquals(0, ernest.numChildren());
-        adopt.setpop(ernest);
+        adopt.setPop(ernest);
         adopt.setMom(mom);
         assertEquals(1, ernest.numChildren());
         assertEquals(ernest, adopt.getPop());
@@ -74,7 +74,6 @@ class RhinoTest {
         /** tests for areSiblings() */
 
         Rhino null1= null;
-        Rhino null2= null;
         Rhino null3= new Rhino("null3", 1970, 5, 'M');
         Rhino null4= new Rhino("null4", 1970, 5, 'M');
         assertEquals(false, null3.areSiblings(null4));
@@ -84,14 +83,16 @@ class RhinoTest {
         Rhino fatherRhino1= new Rhino("fatherRhino1", 1960, 5, 'M');
         Rhino motherRhino2= new Rhino("motherRhino2", 1970, 5, 'F');
         Rhino fatherRhino2= new Rhino("fatherRhino2", 1970, 5, 'M');
+        Rhino motherRhino3= new Rhino("motherRhino3", 1970, 5, 'F');
+        Rhino fatherRhino3= new Rhino("fatherRhino3", 1970, 5, 'M');
         Rhino kevin= new Rhino("kevin", 1990, 7, 'M', motherRhino1, fatherRhino1);
         Rhino broofKevin= new Rhino("broofKevin", 1985, 5, 'M', motherRhino1, fatherRhino1);
         Rhino orphan1= new Rhino("orphan1", 1980, 5, 'F');
         Rhino orphan2= new Rhino("orphan2", 2000, 5, 'M');
         Rhino samemomasKev= new Rhino("samemomasKev", 1985, 5, 'M', motherRhino1, fatherRhino2);
-        Rhino samepopasKev= new Rhino("samepopasKev", 1985, 5, 'M', null, fatherRhino1);
-        Rhino diffmom= new Rhino("diffmom", 1980, 5, 'M', motherRhino2, null);
-        Rhino diffpop= new Rhino("diffpop", 1980, 5, 'M', null, fatherRhino2);
+        Rhino samepopasKev= new Rhino("samepopasKev", 1985, 5, 'M', motherRhino2, fatherRhino1);
+        Rhino diffmom= new Rhino("diffmom", 1980, 5, 'M', motherRhino2, fatherRhino3);
+        Rhino diffpop= new Rhino("diffpop", 1980, 5, 'M', motherRhino3, fatherRhino2);
         assertEquals(false, orphan1.areSiblings(orphan2));
         assertEquals(false, kevin.areSiblings(kevin));
         assertEquals(true, kevin.areSiblings(samemomasKev));
@@ -99,6 +100,7 @@ class RhinoTest {
         assertEquals(false, kevin.areSiblings(diffmom));
         assertEquals(false, kevin.areSiblings(diffpop));
         assertEquals(true, kevin.areSiblings(broofKevin));
+        assertEquals(false, kevin.areSiblings(null));
     }
 
     @Test
@@ -125,21 +127,20 @@ class RhinoTest {
         assertThrows(AssertionError.class,
             () -> { new Rhino("kevin", 1990, 7, 'A', motherRhino, fatherRhino); });
         assertThrows(AssertionError.class,
-            () -> { new Rhino("kevin", 1990, 7, 'M', motherRhino, fatherRhino); });
-        assertThrows(AssertionError.class,
             () -> { new Rhino("kevin", 1990, 13, 'M', motherRhino, fatherRhino); });
 
         /*testing preconditions for GroupB methods.*/
-        assertThrows(AssertionError.class, () -> { peter.setMom(motherRhino); });
-        assertThrows(AssertionError.class, () -> { peter.setMom(null); });
-        assertThrows(AssertoinError.class, () -> { peter.setMom(fatherRhino); });
+        assertThrows(AssertionError.class, () -> { Peter.setMom(motherRhino); });
+        assertThrows(AssertionError.class, () -> { Peter.setMom(null); });
+        assertThrows(AssertionError.class, () -> { Peter.setMom(fatherRhino); });
 
-        assertThrows(AssertionError.class, () -> { peter.setPop(fatherRhino); });
-        assertThrows(AssertionError.class, () -> { peter.setPop(null); });
-        assertThrows(AssertoinError.class, () -> { peter.setPop(motehrRhino); });
+        assertThrows(AssertionError.class, () -> { Peter.setPop(fatherRhino); });
+        assertThrows(AssertionError.class, () -> { Peter.setPop(null); });
+        assertThrows(AssertionError.class, () -> { Peter.setPop(motherRhino); });
 
         /*testing preconditions for GroupD methods.*/
-        assertThrows(AssertoinError.class, () -> { fatherRhino.isOlder(null); });
+        assertThrows(AssertionError.class, () -> { fatherRhino.isOlder(null); });
+
     }
 
 }

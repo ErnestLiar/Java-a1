@@ -1,5 +1,11 @@
-/** NetId: el657, ny46. Time spent: hh hours, mm minutes. What I thought about this
-    * assignment: */
+/** NetId: el657, ny46. Time spent: 7 hours, 0 minutes. */
+/**
+ *  What we thought about this assignment:
+    * It wasn't too bad, but still quite challenging.
+    * Writing test cases took a while
+    * The assignment sheet could be more readable and understandable.
+    *
+    * */
 /** An instance maintains info about the rhino. */
 public class Rhino {
 
@@ -29,6 +35,7 @@ public class Rhino {
         assert n.length() >= 1 && m >= 1 && m <= 12;
         assert g == 'F' || g == 'M';
         assert mother != null && father != null;
+        assert mother.isFemale() && !father.isFemale();
         name= n;
         year= y;
         month= m;
@@ -109,7 +116,7 @@ public class Rhino {
     /** Set this rhino's dad to father.<br>
      * Precondition: this rhino's dad is null and father is not null and<br>
      * father is male. */
-    public void setpop(Rhino father) {
+    public void setPop(Rhino father) {
         assert father != null && pop == null && !father.isFemale();
         pop= father;
         father.children++ ;
