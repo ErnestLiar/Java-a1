@@ -71,8 +71,15 @@ class RhinoTest {
         assertEquals(false, ernest.isOlder(yu));
         assertEquals(false, ernest.isOlder(li));
 
-<<<<<<< HEAD
         /** tests for areSiblings() */
+
+        Rhino null1= null;
+        Rhino null2= null;
+        Rhino null3= new Rhino("null3", 1970, 5, 'M');
+        Rhino null4= new Rhino("null4", 1970, 5, 'M');
+        assertEquals(false, null3.areSiblings(null4));
+        assertEquals(false, null3.areSiblings(null1));
+
         Rhino motherRhino1= new Rhino("motherRhino1", 1960, 5, 'F');
         Rhino fatherRhino1= new Rhino("fatherRhino1", 1960, 5, 'M');
         Rhino motherRhino2= new Rhino("motherRhino2", 1970, 5, 'F');
