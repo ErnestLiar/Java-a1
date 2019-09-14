@@ -133,8 +133,8 @@ public class Rhino {
     /** = "this rhino and r are siblings. " */
     public boolean areSiblings(Rhino r) {
 
-        return this != r && mom != r.mom && pop != r.pop &&
-            mom == r.mom && pop == r.pop;
+        return this != r && r != null &&
+            (mom == r.mom && mom != null || pop == r.pop && pop != null);
     }
 
 }

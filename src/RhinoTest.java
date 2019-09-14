@@ -70,10 +70,25 @@ class RhinoTest {
         assertEquals(false, ernest.isOlder(yu));
         assertEquals(false, ernest.isOlder(li));
 
-        Rhino motherRhino= new Rhino("motherRhino", 1960, 5, 'F');
-        Rhino fatherRhino= new Rhino("fatherRhino", 1960, 5, 'M');
-        Rhino kevin= new Rhino("kevin", 1990, 7, 'M', motherRhino, fatherRhino);
-        Rhino broofKevin= new Rhino("broofKevin", 1985, 5, 'M', motherRhino, fatherRhino);
+        /** tests for areSiblings() */
+        Rhino motherRhino1= new Rhino("motherRhino1", 1960, 5, 'F');
+        Rhino fatherRhino1= new Rhino("fatherRhino1", 1960, 5, 'M');
+        Rhino motherRhino2= new Rhino("motherRhino2", 1970, 5, 'F');
+        Rhino fatherRhino2= new Rhino("fatherRhino2", 1970, 5, 'M');
+        Rhino kevin= new Rhino("kevin", 1990, 7, 'M', motherRhino1, fatherRhino1);
+        Rhino broofKevin= new Rhino("broofKevin", 1985, 5, 'M', motherRhino1, fatherRhino1);
+        Rhino orphan1= new Rhino("orphan1", 1980, 5, 'F');
+        Rhino orphan2= new Rhino("orphan2", 2000, 5, 'M');
+        Rhino samemomasKev= new Rhino("samemomasKev", 1985, 5, 'M', motherRhino1, fatherRhino2);
+        Rhino samepopasKev= new Rhino("samepopasKev", 1985, 5, 'M', null, fatherRhino1);
+        Rhino diffmom= new Rhino("diffmom", 1980, 5, 'M', motherRhino2, null);
+        Rhino diffpop= new Rhino("diffpop", 1980, 5, 'M', null, fatherRhino2);
+        assertEquals(false, orphan1.areSiblings(orphan2));
+        assertEquals(false, kevin.areSiblings(kevin));
+        assertEquals(true, kevin.areSiblings(samemomasKev));
+        assertEquals(true, kevin.areSiblings(samepopasKev));
+        assertEquals(false, kevin.areSiblings(diffmom));
+        assertEquals(false, kevin.areSiblings(diffpop));
         assertEquals(true, kevin.areSiblings(broofKevin));
 
     }
@@ -86,7 +101,5 @@ class RhinoTest {
         // fatherRhino);});
 
     }
-
-    /** tests for areSiblings() */
 
 }
