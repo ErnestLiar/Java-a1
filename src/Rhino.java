@@ -9,6 +9,8 @@ public class Rhino {
      * and g is 'F' or 'M' for female or male */
 
     public Rhino(String n, int y, int m, char g) {
+        assert n.length() >= 1 && m >= 1 && m <= 12;
+        assert g == 'F' || g == 'M';
         name= n;
         year= y;
         month= m;
@@ -26,6 +28,9 @@ public class Rhino {
      * father is non-null and male). */
 
     public Rhino(String n, int y, int m, char g, Rhino mother, Rhino father) {
+        assert n.length() >= 1 && m >= 1 && m <= 12;
+        assert g == 'F' || g == 'M';
+        assert mother != null && father != null;
         name= n;
         year= y;
         month= m;
@@ -101,6 +106,7 @@ public class Rhino {
      * Precondition: this rhino's mom is null and mother is not null and<br>
      * mother is female. */
     public void setMom(Rhino mother) {
+        assert mother != null && mom == null && mother.isFemale();
 
         mom= mother;
         mother.children++ ;
@@ -110,7 +116,7 @@ public class Rhino {
      * Precondition: this rhino's dad is null and father is not null and<br>
      * father is male. */
     public void setpop(Rhino father) {
-
+        assert father != null && pop == null && !father.isFemale();
         pop= father;
         father.children++ ;
     }
@@ -119,14 +125,16 @@ public class Rhino {
      * Precondition: r is not null. */
 
     public boolean isOlder(Rhino r) {
-
-        return getYOB() < r.getYOB() || getYOB() == r.getYOB() && getMOB() < r.getMOB();
+        assert r != null;
+        return getYOB() < r.getYOB() || getYOB() == r.getYOB() &&
+            getMOB() < r.getMOB();
     }
 
     /** = "this rhino and r are siblings. " */
     public boolean areSiblings(Rhino r) {
 
-        return this != r && mom != r.mom && pop != r.pop && mom == r.mom && pop == r.pop;
+        return this != r && mom != r.mom && pop != r.pop &&
+            mom == r.mom && pop == r.pop;
     }
 
 }
